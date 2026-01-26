@@ -47,6 +47,44 @@ app.post('/todos', (req, res) => {
     });
 });
 
+app.delete('/todos', (req, res) => {
+    const { todo } = req.body;
+
+    const index = ToDo_Items.indexOf(todo);
+    if (index === -1) {
+        return res.json({
+            success: false,
+            message: "TODO item not found"
+        });
+    }
+    else {
+        ToDo_Items.splice(index, 1);
+        return res.json({
+            success: true,
+            data: todo,
+            message: "TODO item deleted successfully"
+        });
+    }   
+});
+
+app.put('/todos', (req, res) => {
+    const { oldTodo, newTodo } = req.body;
+    const index = ToDo_Items.indexOf(oldTodo);
+
+    if (index === -1) {
+        return res.json({
+            success: false,
+            message: "Old TODO item not found"
+        });
+    }
+    ToDo_Items[index] = newTodo;
+    return res.json({
+        success: true,
+        data: newTodo,
+        message: "TODO item updated successfully"
+    });
+});
+
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
