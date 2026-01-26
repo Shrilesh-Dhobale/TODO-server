@@ -21,6 +21,14 @@ app.get('/', (req, res) => {
     })
 });
 
+app.get('/todos', (req, res) => {
+    return res.json({
+        success: true,
+        data: ToDo_Items,
+        message: "List of TODO items"
+    });
+});
+
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
