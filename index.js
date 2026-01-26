@@ -31,6 +31,14 @@ app.get('/todos', (req, res) => {
 
 app.post('/todos', (req, res) => {
     const { todo } = req.body;
+
+    if (!todo) {
+        return res.json({
+            success: false,
+            message: "TODO item is empty"
+        });
+    }
+
     ToDo_Items.push(todo);
     return res.json({
         success: true,
