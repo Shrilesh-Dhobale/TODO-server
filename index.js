@@ -12,6 +12,13 @@ app.get('/health', (req, res) => {
     })
 });
 
+app.get('/', (req, res) => {
+    return res.json({
+        success: true,
+        message: "Welcome to TODO API"
+    })
+});
+
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
