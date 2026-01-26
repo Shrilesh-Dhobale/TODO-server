@@ -34,7 +34,7 @@ app.post('/todos', (req, res) => {
     ToDo_Items.push(todo);
     return res.json({
         success: true,
-        data: ToDo_Items,
+        data: todo,
         message: "TODO item added successfully"
     });
 });
