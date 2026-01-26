@@ -5,6 +5,8 @@ app.use(express.json());
 
 const PORT=8008;
 
+const ToDo_Items = ["Learn Express.js", "Build a REST API", "Test the API"];
+
 app.get('/health', (req, res) => {
     return res.json({
         success: true,
